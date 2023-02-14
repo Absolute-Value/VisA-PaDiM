@@ -15,11 +15,27 @@ VisAデータセットは産業界の品質検査のための視覚的な異常�
 異常なサンプルは100枚すべてをテスト用データとして使用する．  
 異常なサンプルにはchunk of gum missing, scratches, small cracks, corner missing, similar colour spotの5種類の異常が存在する．
 
+### データの配置
+以下のように構造を変更しています．
+
+* VisA
+    * chewinggum
+        * train
+            * Normal
+                * 000.JPG
+                * 001.JPG
+                * ...
+        * test
+            * Anomaly
+        * Masks
+            * Anomaly
+
 ## 手法
-PaDiM[[2]](#参考文献)を使用した．PaDiMとはImageNet[[3]](#参考文献)で事前学習済みCNNモデルを利用した異常検知の手法である．
+PaDiM[[2]](#参考文献)を使用した．PaDiMとはImageNet[[3]](#参考文献)で事前学習済みCNNモデルを利用した異常検知の手法である．  
+参考：[https://github.com/xiahaifeng1995/PaDiM-Anomaly-Detection-Localization-master](https://github.com/xiahaifeng1995/PaDiM-Anomaly-Detection-Localization-master)
 
 ## 環境
-[SageMaker](https://studiolab.sagemaker.aws/)をを使用しCPU環境で，訓練データでのPaDiMの共分散行列の計算およびテストデータに対する異常検出と性能評価を行なった．
+[SageMaker](https://studiolab.sagemaker.aws/)をを使用しCPU環境で，訓練データでのPaDiMの共分散行列の計算およびテストデータに対する異常検出と性能評価を行なった．  
 [environment.yml](./environment.yml)を実行することで，環境の構築ができ，Jupyter Notebookの1行目にある以下を実行することで，pytorchをインストールすることができる．
 ```python
 pip install torch==1.7.1+cu110 torchvision==0.8.2+cu110 torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
@@ -27,19 +43,19 @@ pip install torch==1.7.1+cu110 torchvision==0.8.2+cu110 torchaudio==0.7.2 -f htt
 
 ## 結果
 AUROC 0.983とかなり良い精度で検出できた．
-![](imgs/roc.png)
+![](results/roc_curve_chewinggum.png)
 
 ### chunk of gum missing
-![](imgs/chunk%20of%20gum%20missing.png)
+![](results/pictures_resnet18/chewinggum/chewinggum_56.png)
 
 ### scratches
-![](imgs/scratches.png)
+![](results/pictures_resnet18/chewinggum/chewinggum_74.png)
 
 ### small cracks
-![](imgs/small%20cracks.png)
+![](results/pictures_resnet18/chewinggum/chewinggum_9.png)
 
 ### similar colour spot
-![](imgs/similar%20colour%20spot.png)
+![](results/pictures_resnet18/chewinggum/chewinggum_75.png)
 
 ## 参考文献
 
