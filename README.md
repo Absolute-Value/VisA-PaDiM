@@ -36,7 +36,7 @@ PaDiM[[2]](#参考文献)を使用した．PaDiMとはImageNet[[3]](#参考文�
 
 ## 環境
 [SageMaker](https://studiolab.sagemaker.aws/)をを使用しCPU環境で，訓練データでのPaDiMの共分散行列の計算およびテストデータに対する異常検出と性能評価を行なった．  
-[environment.yml](./environment.yml)を実行することで，環境の構築ができ，Jupyter Notebookの1行目にある以下を実行することで，pytorchをインストールすることができる．
+[environment.yml](./environment.yml)を実行することで，環境の構築ができ，[chewinggum.ipynb](./chewinggum.ipynb)の1行目にある以下を実行することで，pytorchをインストールすることができる．
 ```python
 pip install torch==1.7.1+cu110 torchvision==0.8.2+cu110 torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
 ```
